@@ -39,6 +39,11 @@ public class TransactionServiceDBImpl implements TransactionService {
             balance = account.getBalance() - transaction.getAmount();
 
         } else if (transaction.getDebitCreditStatus() == 'C'){
+
+            String[] description = {"Setor Tunai"};
+
+            if (!Arrays.asList(description).contains(transaction.getDescription())) throw new ErrorDescription(transaction.getDescription(), "Credit");
+
             balance = account.getBalance() + transaction.getAmount();
 
         } else {
