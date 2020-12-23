@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface AccountService {
 
-    public Account createAccount (Account account);
+    Account createAccount (Account account);
 
-    public Account getAccountById (Integer id);
+    Account getAccountById (Integer id);
 
-    public List<Account> getAllAccount ();
+    List<Account> getAllAccount (String sort, String orderBy);
 
 }

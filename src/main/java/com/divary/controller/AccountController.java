@@ -25,8 +25,8 @@ public class AccountController {
     }
 
     @GetMapping()
-    public List<Account> getAllAccount(){
-        return accountService.getAllAccount();
+    public List<Account> getAllAccount(@RequestParam (required = false, defaultValue = "")String sort, @RequestParam (required = false, defaultValue = "")String orderBy){
+        return accountService.getAllAccount(sort, orderBy);
     }
 
 }

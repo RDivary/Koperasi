@@ -29,8 +29,20 @@ public class AccountServiceDBImpl implements AccountService{
     }
 
     @Override
-    public List<Account> getAllAccount() {
-        return accountRepository.findAll();
+    public List<Account> getAllAccount(String sort, String orderBy) {
+
+        switch (sort.toLowerCase()){
+
+            case "point":
+                if (orderBy.equalsIgnoreCase("asc")) return accountRepository.findByOrderByPointAsc();
+                return accountRepository.findByOrderByPointDesc();
+            case "balance":
+                if (orderBy.equalsIgnoreCase("asc")) return accountRepository.findByOrderByBalanceAsc();
+                return accountRepository.findByOrderByBalanceDesc();
+            default:
+                return accountRepository.findAll();
+        }
+
     }
 
 }
