@@ -22,10 +22,9 @@ public class AccountServiceDBImpl implements AccountService{
 
     @Override
     public Account getAccountById(Integer id) {
-        if (accountRepository.findById(id).isPresent()) {
-            return accountRepository.findById(id).get();
-        }
-        throw new IdNotFound("user", id.toString());
+
+        return accountRepository.findById(id).orElseThrow(() -> new IdNotFound("user", id.toString()));
+
     }
 
     @Override
