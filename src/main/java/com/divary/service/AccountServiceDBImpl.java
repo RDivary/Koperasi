@@ -17,6 +17,7 @@ public class AccountServiceDBImpl implements AccountService{
     @Override
     public Account createAccount(Account account) {
         account.setPoint(0);
+        account.setBalance(0);
         return accountRepository.save(account);
     }
 
